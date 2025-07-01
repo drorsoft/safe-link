@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import './App.css';
-import { HackerImage } from './components/HackerImage.tsx';
-import { ByDrorSoft } from './components/ByDrorSoft.tsx';
-import { AppButton } from './components/AppButton.tsx';
-import { AppTextInput } from './components/AppTextInput.tsx';
-import { Results } from './components/Results.tsx';
-import { isValidUrl } from './utils/isValidUrl.ts';
-import { getDomainFromUrl } from './utils/getDomailFromUrl.ts';
-import { checkDomainData } from './api/checkDomainData.ts';
+import {HackerImage} from './components/HackerImage.tsx';
+import {ByDrorSoft} from './components/ByDrorSoft.tsx';
+import {AppButton} from './components/AppButton.tsx';
+import {AppTextInput} from './components/AppTextInput.tsx';
+import {Results} from './components/Results.tsx';
+import {isValidUrl} from './utils/isValidUrl.ts';
+import {getDomainFromUrl} from './utils/getDomailFromUrl.ts';
+import {checkDomainData} from './api/checkDomainData.ts';
 
 function App() {
     const [url, setUrl] = useState('cdn.freechatgpt.cloud');
@@ -25,33 +25,32 @@ function App() {
             domain: domain,
             isSafe: !response.isMalicious,
         });
-       
+
     };
 
-    return (<main className={'flex flex-col gap-10 items-center mb-10'}>
-        <HackerImage />
-        <h1>Is This Site Safe</h1>
-        <div className={'w-96'}>
+    return (<main className={'flex flex-col gap-6 items-center   '}>
+        <HackerImage/>
+        <h1 className={'text-xl font-bold'}>Is This Site Safe</h1>
+        <div className={'flex flex-col gap-3 w-96   '}>
+            <div   className={'  h-14  '}>
             <AppTextInput value={url}
-                          className={'w-full h-12'}
+                          className={'w-full shadow-md  '}
                           placeholder={'Enter a URL'}
                           id={'url'}
                           onChange={(ev) => {
                               setShowUrlNotValidError(false);
                               setUrl(ev.target.value);
-                          }} />
-
-            <div className={'h-10 flex flex-col justify-end'}>
+                          }}/>
+            </div>
+            <div className={'h-14 flex flex-col p-4 mt-2 '}>
                 {showUrlNotValidError && <p className={'text-red-500 font-bold'}>URL is not valid</p>}
+                {!showUrlNotValidError &&  <Results results={resultData}/>}
             </div>
-            <div className={'h-10'}>
 
-            <Results results={resultData} />
-            </div>
         </div>
 
 
-        <div className={' w-40  '}>
+        <div className={' w-40  mt-2 '}>
             <AppButton className={'bg-blue-600 '} onClick={() => {
                 checkUrl().then();
             }}>
@@ -61,7 +60,7 @@ function App() {
 
 
         <div className="read-the-docs">
-            <ByDrorSoft />
+            <ByDrorSoft/>
         </div>
     </main>);
 }
