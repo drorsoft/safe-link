@@ -5,7 +5,7 @@
 - There is a button, that displays a popup of the terms and conditions when the user clicks on a button.
 - The button should be placed in the footer of the page, before (above) the Drorsoft logo.
 - The button should be labeled "Terms and Conditions" with an underline.
-- prefer not to use the new `dialog` element - https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement.
+- prefer to use the new `dialog` element - https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement.
 
 ### The text
 
