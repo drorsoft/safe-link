@@ -10,11 +10,12 @@ describe('App button', () => {
         const input : HTMLInputElement = screen.getByRole('input');
         fireEvent.input(input, { target: { value: 'test' } });
         expect( input.value).toBe('test');
+        expect(input.disabled).toBe(false);
     });
     it('does not types in the input if disabled', async () => {
         render(<AppTextInput id={'abc'} disabled label={'input'} /> );
         const input : HTMLInputElement = screen.getByRole('input');
-        expect(input.value).toBe('');
+        expect(input.disabled).toBe(true);
     });
 
 
