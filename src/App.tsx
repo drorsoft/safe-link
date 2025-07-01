@@ -10,7 +10,7 @@ import {getDomainFromUrl} from './utils/getDomailFromUrl.ts';
 import {checkDomainData} from './api/checkDomainData.ts';
 
 function App() {
-    const [url, setUrl] = useState('cdn.freechatgpt.cloud');
+    const [url, setUrl] = useState('');
     const [resultData, setResultData] = useState<{ domain: string, isSafe: boolean } | null>(null);
     const [showUrlNotValidError, setShowUrlNotValidError] = useState(false);
     const checkUrl = async () => {
