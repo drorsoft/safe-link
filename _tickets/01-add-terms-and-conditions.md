@@ -7,6 +7,7 @@
 - The button should be labeled "Terms and Conditions" with an underline.
 - prefer to use the new `dialog` element - https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement.
 
+
 ### The text
 
 `Terms and Conditions of Use for Safe-Link
