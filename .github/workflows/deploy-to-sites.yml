@@ -3,7 +3,7 @@ name: Deploy static content to Pages
 
 on:
   workflow_run:
-    workflows: [ "CI Test" ]  # This should match the exact name of your ci-test workflow
+    workflows: [ "CI Tests" ]  # This should match the exact name of your ci-test workflow
     branches: [ main ]
     types: [ completed ]
   workflow_dispatch:
