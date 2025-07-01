@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import { HackerImage } from './components/HackerImage.tsx';
+import { ByDrorSoft } from './components/ByDrorSoft.tsx';
+import { AppButton } from './components/AppButton.tsx';
+import { AppTextInput } from './components/AppTextInput.tsx';
+import { Results } from './components/Results.tsx';
+import { isValidUrl } from './utils/isValidUrl.ts';
+import { getDomainFromUrl } from './utils/getDomailFromUrl.ts';
+import { checkDomainData } from './api/checkDomainData.ts';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [url, setUrl] = useState('cdn.freechatgpt.cloud');
+    const [resultData, setResultData] = useState<{ domain: string, isSafe: boolean } | null>(null);
+    const [showUrlNotValidError, setShowUrlNotValidError] = useState(true);
+    const checkUrl = async () => {
+        setResultData(null);
+        if (!isValidUrl(url)) {
+            setShowUrlNotValidError(true);
+            return;
+        }
+        const domain = getDomainFromUrl(url);
+        const response = await checkDomainData(domain);
+        setResultData({
+            domain: domain,
+            isSafe: !response.isMalicious,
+        });
+       
+    };
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (<main className={'flex flex-col gap-10 items-center mb-10'}>
+        <HackerImage />
+        <h1>Is This Site Safe</h1>
+        <div className={'w-96'}>
+            <AppTextInput value={url}
+                          className={'w-full h-12'}
+                          placeholder={'Enter a URL'}
+                          id={'url'}
+                          onChange={(ev) => {
+                              setShowUrlNotValidError(false);
+                              setUrl(ev.target.value);
+                          }} />
+
+            <div className={'h-10 flex flex-col justify-end'}>
+                {showUrlNotValidError && <p className={'text-red-500 font-bold'}>URL is not valid</p>}
+            </div>
+            <div className={'h-10'}>
+
+            <Results results={resultData} />
+            </div>
+        </div>
+
+
+        <div className={' w-40  '}>
+            <AppButton className={'bg-blue-600 '} onClick={() => {
+                checkUrl().then();
+            }}>
+                Check URL
+            </AppButton>
+        </div>
+
+
+        <div className="read-the-docs">
+            <ByDrorSoft />
+        </div>
+    </main>);
 }
 
-export default App
+export default App;
