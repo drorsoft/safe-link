@@ -12,7 +12,7 @@ import { checkDomainData } from './api/checkDomainData.ts';
 function App() {
     const [url, setUrl] = useState('cdn.freechatgpt.cloud');
     const [resultData, setResultData] = useState<{ domain: string, isSafe: boolean } | null>(null);
-    const [showUrlNotValidError, setShowUrlNotValidError] = useState(true);
+    const [showUrlNotValidError, setShowUrlNotValidError] = useState(false);
     const checkUrl = async () => {
         setResultData(null);
         if (!isValidUrl(url)) {

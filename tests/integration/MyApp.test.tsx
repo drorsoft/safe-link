@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { checkDomainData } from '../../src/api/checkDomainData';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import App from '../../src/App';

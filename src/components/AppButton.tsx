@@ -15,7 +15,7 @@ export const AppButton = ({
         <button
             style={{borderRadius: '10rem'}}
             data-testid={'app-button'}
-            className={`h-12 w-max min-w-full rounded-lg bg-app-azure-button p-2  text-white ${className} disabled:cursor-not-allowed disabled:opacity-50`}
+            className={`h-12 w-max min-w-full rounded-lg  p-2 ${className} text-white disabled:cursor-not-allowed disabled:opacity-50`}
             {...config}
 
 
