@@ -37,7 +37,7 @@
 - Never expose sensitive data or secrets.
 - Validate and sanitize all user input.
 - Follow best practices for accessibility (a11y).
+- Do not use `document.getElementById`. Use `ref` and `useRef` instead in React components.
 
 ---
-These rules guide AI agents and contributors for consistent, high-quality contributions to the safe-link project.
-
+These rules guide AI agents and contributors for consistent, high-quality contributions to the safe-link project
